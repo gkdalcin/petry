@@ -1,12 +1,14 @@
 <template>
-    <div class="flex justify-center w-full h-full bg-black opacity-50 z-40 font-primary">
+  <div class="flex w-full h-full justify-center">
+    <div class="absolute z-20 w-full h-full bg-black opacity-50 font-primary"/>
         <div
-          class="flex-col absolute bottom-1/2 p-6 bg-white rounded-lg space-y-3"
+          class="flex-col absolute bottom-1/2 z-20 p-6 rounded-lg space-y-3 bg-gray-100"
         >
           <div class="flex items-center justify-center space-x-1.5">
             <div>Nome do lugar:</div>
             <input
-              class="w-32 h-8 bg-stone-300"
+              class="w-32 h-8 bg-stone-300 px-1 text-sm"
+              v-model="nome"
             />
           </div>
           <div class="flex justify-center">
@@ -27,8 +29,13 @@ export default {
     name: 'PopUpCriarLugar',
     methods: {
         criarLugar() {
-            this.$emit('criarLugar')
+            this.$emit('criarLugar', this.nome)
         },
+    },
+    data() {
+      return {
+        nome: ''
+      }
     },
 }
 </script>
