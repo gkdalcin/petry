@@ -39,10 +39,27 @@
             </div>
           </div>
           <div class="flex-col items-center justify-center">
-            <div>Tipo de conexão:</div>
+            <div>Sentido da conexão:</div>
             <div class="flex space-x-0.5">
                 <div
                     v-for="(item, index) in ['entrada', 'saída']"
+                    :key="index"
+                >
+                    <button 
+                      class="px-2 py-1 rounded-full"
+                      :class="sentidoSelecionado === item? 'bg-black text-white':'bg-stone-300'"
+                      @click="sentidoSelecionado = item"
+                    >
+                        {{ item }}
+                    </button>
+                </div>
+            </div>
+          </div>
+          <div class="flex-col items-center justify-center">
+            <div>Tipo de conexão:</div>
+            <div class="flex space-x-0.5">
+                <div
+                    v-for="(item, index) in ['normal', 'inibidora', 'reset']"
                     :key="index"
                 >
                     <button 
@@ -54,6 +71,14 @@
                     </button>
                 </div>
             </div>
+          </div>
+          <div class="flex items-center justify-start space-x-1.5">
+            <div>Nome do lugar:</div>
+            <input
+              class="w-12 h-7 bg-stone-300 px-1 text-sm text-center"
+              v-model="peso"
+              type="number"
+            />
           </div>
           <div class="flex justify-center">
             <button
@@ -80,12 +105,14 @@ export default {
         nome: '',
         lugarSelecionado: '',
         transicaoSelecionada: '',
-        tipoSelecionado: 'entrada',
+        sentidoSelecionado: 'entrada',
+        tipoSelecionado: 'normal',
+        peso: 1
       }
     },
     methods: {
         criarConexao() {
-            this.$emit('criarConexao', {'lugar': this.lugarSelecionado, 'transicao': this.transicaoSelecionada, 'tipo': this.tipoSelecionado})
+            this.$emit('criarConexao', {'lugar': this.lugarSelecionado, 'transicao': this.transicaoSelecionada, 'sentido': this.sentidoSelecionado, 'tipo': this.tipoSelecionado, 'peso': this.peso})
         },
     },
 }
