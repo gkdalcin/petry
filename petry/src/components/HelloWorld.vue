@@ -389,10 +389,12 @@ export default {
         [450,700], //L12
         [650,550]  //L13
       ];
+      this.lugaresExists = [true,true,true,true,true,true,true,true,true,true,true,true,true];
       this.marcasLugares = [0,2,1,0,0,0,10,0,0,0,0,0,0];
       this.transicoes = ['TA','TB','TC','TD','TE','TF','TG'];
       this.posicaoTransicoes = [[270,135],[470,135],[670,135],[270,370],[470,330],[670,370],[470,570]];
-      this.statusTransicoes.push(false);
+      this.statusTransicoes = [false,true,true,false,false,false,false];
+      this.transicaoExists = [true,true,true,true,true,true,true];
       let conexoesRef = [
         {'lugar': 'L1', 'transicao': 'TA', 'sentido': 'entrada', 'tipo': 'normal', 'peso': 2},
         {'lugar': 'L2', 'transicao': 'TB', 'sentido': 'entrada', 'tipo': 'normal', 'peso': 2},
